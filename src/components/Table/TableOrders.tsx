@@ -37,15 +37,13 @@ const TableOrders: React.FC<ITableOrdersProps> = ({ orders }) => {
           {orders &&
             orders.map((order) => (
               <TableRow
-                key={order.id}
+                key={order?.id}
                 className=" hover:bg-slate-200 hover:text-gray-600"
               >
                 <TableCell className="font-medium">{order?.id}</TableCell>
                 <TableCell>{validIconTypeWork(order?.typeWork)}</TableCell>
                 <TableCell>{validIconStatus(order?.status)}</TableCell>
-                {/* <TableCell>{order?.status}</TableCell> */}
                 <TableCell className="text-right">{`${order?.numExecutors} / ${order?.executors} `}</TableCell>
-                {/* <Link to={`/orders/${order.id}`}> */}
                 <TableCell className="font-medium">
                   <Link to={getOrderUrl(`/${order.id}`)}>
                     <View className=" text-blue-400" />

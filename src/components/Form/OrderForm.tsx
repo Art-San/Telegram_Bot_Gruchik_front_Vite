@@ -27,9 +27,7 @@ const formSchema = z.object({
     message: 'Не должно быть пустым'
   }),
   numExecutors: z.string().min(1, { message: 'Не должно быть пустым' }),
-  typeWork: z.string({
-    required_error: 'Пожалуйста, выберите один из вариантов.'
-  }),
+  typeWork: z.string().min(1, { message: 'Выберите вариант' }),
   address: z.string().min(1, { message: 'Не должно быть пустым' }),
   text: z
     .string()
@@ -57,10 +55,22 @@ export function OrderForm() {
   })
 
   const { reset } = form
-  // const emailSignIn = useEmailSignIn()
-  function onSubmit(formaData: any) {
-    // console.log('Submitted values:', formaData)
-    createOrder(formaData)
+
+  function parseNumber(value: string) {
+    return value ? parseInt(value, 10) : null
+  }
+
+  function onSubmit(formData: any) {
+    const transformedData = {
+      ...formData,
+      authorId: '721836748',
+      authorName: 'Admin',
+      numExecutors: parseNumber(formData.numExecutors),
+      hourCost: parseNumber(formData.hourCost)
+    }
+
+    createOrder(transformedData)
+
     reset({
       startTime: '',
       numExecutors: '',
