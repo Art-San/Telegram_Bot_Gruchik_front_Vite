@@ -26,7 +26,7 @@ export const AuthService = {
   async session() {
     const response = await axiosClassic.get<any>(getAuthUrl('/session'))
 
-    console.log(177, 'response', response)
+    // console.log(177, 'response', response)
 
     return response
   }

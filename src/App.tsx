@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import ProductList from './components/ProductList/ProductList'
 import Header from './components/Header/Header'
@@ -17,8 +17,8 @@ const queryClient = new QueryClient()
 
 function App() {
   const { authUser, isLoading } = useAuthContext()
-  // console.log(1, 'authUser', authUser)
-  // console.log(1, 'isLoading', isLoading)
+  console.log(1, 'authUser', authUser)
+  console.log(1, 'isLoading', isLoading)
   // if (isLoading) return null
   return (
     <>

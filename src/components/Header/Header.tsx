@@ -4,7 +4,8 @@ import { useSessionQuery } from '@/pages/Auth/hooks/useSessionQuery'
 
 const Header: FC = () => {
   const { session } = useSessionQuery()
-  console.log(session)
+  // console.log(12, ' Header session',session)
+  // console.log(12, ' Header session', user)
 
   // if (!session) return null
 
