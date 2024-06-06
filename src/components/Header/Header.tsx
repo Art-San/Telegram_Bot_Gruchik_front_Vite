@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { useTelegram } from '../../hooks/useTelegram'
 import { useSessionQuery } from '@/pages/Auth/hooks/useSessionQuery'
+import { LogoutButton } from '../CustomButton/LogoutButton'
 
 const Header: FC = () => {
   const { session } = useSessionQuery()
-  // console.log(12, ' Header session',session)
-  // console.log(12, ' Header session', user)
+  console.log(session)
 
   // if (!session) return null
 
@@ -38,16 +38,15 @@ const Header: FC = () => {
         >
           Товары
         </a>
-        <div className="flex gap-2 items-center">
-          {session?.data.userName}
-          {/* <SignOutButton /> */}
-        </div>
-        {/* <Button
-          onClick={onClose}
-          className="bg-transparent border-none text-white hover:text-gray-400 focus:text-gray-400"
-        >
-          Закрыть
-        </Button> */}
+        {session && (
+          <div className="flex flex-col gap-2 items-center">
+            <p>{session?.data.userName}</p>
+            <div className=" flex gap-2 items-center">
+              <p>Sign Out</p>
+              <LogoutButton />
+            </div>
+          </div>
+        )}
       </nav>
     </div>
   )
